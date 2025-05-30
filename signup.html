@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sign Up - KahiyaCo</title>
+</head>
+<body>
+  <h2>Create an Account</h2>
+  <form id="signupForm">
+    <input type="text" id="name" placeholder="Full Name" required /><br />
+    <input type="email" id="signupEmail" placeholder="Email Address" required /><br />
+    <input type="password" id="signupPassword" placeholder="Password" required /><br />
+    <button type="submit">Sign Up</button>
+    <button id="googleSignup" type="button">Sign up with Google</button>
+  </form>
+
+  <p>Already have an account? <a href="login.html">Login</a></p>
+
+  <!-- Firebase scripts go below -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-auth.js";
+    import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCB84FTOdVHbdMKSBLqKZ_YvZYl_QSVZek",
+      authDomain: "kahiyaco.firebaseapp.com",
+      projectId: "kahiyaco",
+      storageBucket: "kahiyaco.firebasestorage.app",
+      messagingSenderId: "1034759752393",
+      appId: "1:1034759752393:web:659872d47eef97c251db18",
+      measurementId: "G-ZB13WQQKGF"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    const signupForm = document.getElementById("signupForm");
+    signupForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("signupEmail").value;
+      const password = document.getElementById("signupPassword").value;
+
+      try {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+
+        // Save user data to Firestore
+        await setDoc(doc(db, "users", user.uid), {
+          uid: user.uid,
+          name: name,
+          email: email,
+          authProvider: "email",
+          timestamp: new Date()
+        });
+
+        alert("Signup successful!");
+        window.location.href = "index.html";
+      } catch (error) {
+        alert(error.message);
+      }
+    });
+    
+    import { GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-auth.js";
+import { getDoc, doc } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-firestore.js";
+
+const provider = new GoogleAuthProvider();
+
+const googleSignupBtn = document.getElementById("googleSignup");
+googleSignupBtn.addEventListener("click", () => {
+  signInWithPopup(auth, provider)
+    .then(async (result) => {
+      const user = result.user;
+
+      // Check if already in Firestore
+      const userRef = doc(db, "users", user.uid);
+      const userSnap = await getDoc(userRef);
+
+      if (!userSnap.exists()) {
+        await setDoc(userRef, {
+          uid: user.uid,
+          name: user.displayName,
+          email: user.email,
+          authProvider: "google",
+          timestamp: new Date()
+        });
+      }
+
+      window.location.href = "index.html";
+    })
+    .catch((error) => {
+      alert(error.message);
+    });
+});
+  </script>
+</body>
+</html>
