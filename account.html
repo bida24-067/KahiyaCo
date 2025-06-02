@@ -1,1 +1,70 @@
-account creation
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Account</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="form-box">
+      <h2>Your Account</h2>
+      <div class="info-box">
+        <p><strong>Name:</strong> <span id="name"></span></p>
+        <p><strong>Email:</strong> <span id="email"></span></p>
+        <p><strong>Phone:</strong> <span id="phone"></span></p>
+      </div>
+      <button id="logoutBtn">Log Out</button>
+    </div>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-analytics.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyCB84FTOdVHbdMKSBLqKZ_YvZYl_QSVZek",
+    authDomain: "kahiyaco.firebaseapp.com",
+    projectId: "kahiyaco",
+    storageBucket: "kahiyaco.firebasestorage.app",
+    messagingSenderId: "1034759752393",
+    appId: "1:1034759752393:web:659872d47eef97c251db18",
+    measurementId: "G-ZB13WQQKGF"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+
+    const uid = localStorage.getItem("uid");
+
+    if (uid) {
+      const userRef = doc(db, "users", uid);
+      getDoc(userRef).then(docSnap => {
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          document.getElementById("name").textContent = `${data.firstName} ${data.lastName}`;
+          document.getElementById("email").textContent = data.email;
+          document.getElementById("phone").textContent = data.phone;
+        }
+      });
+    } else {
+      alert("Not logged in.");
+      window.location.href = "signup.html";
+    }
+
+    document.getElementById("logoutBtn").addEventListener("click", () => {
+      signOut(auth).then(() => {
+        localStorage.removeItem("uid");
+        window.location.href = "signup.html";
+      });
+    });
+  </script>
+</body>
+</html>
+
