@@ -1,127 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Account</title>
-  <link rel="stylesheet" href="style.css" />
-  <style>
-  body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #000000, #014421);
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
+  <meta charset="UTF-8">
+  <title>Kahiya&Co | Account</title>
+  <link rel="icon" href="KC-WHITE.png" type="image">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-.container {
-  max-width: 400px;
-  width: 100%;
-  padding: 20px;
-}
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="signup.css"> <!-- Reuse same layout -->
 
-.form-box {
-  background: rgba(0, 0, 0, 0.7);
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 0 12px rgba(0, 255, 0, 0.4);
-}
-
-.form-box h2 {
-  margin-bottom: 10px;
-  color: #00ff90;
-}
-
-.form-box p {
-  margin-bottom: 20px;
-  font-size: 14px;
-  color: #ccc;
-}
-
-input[type="text"], input[type="tel"], input[type="email"], input[type="password"] {
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 15px;
-  border: none;
-  border-radius: 5px;
-  background: #1c1c1c;
-  color: white;
-}
-
-button {
-  width: 100%;
-  padding: 12px;
-  border: none;
-  background-color: #00ff90;
-  color: black;
-  font-weight: bold;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-button:hover {
-  background-color: #00cc70;
-}
-
-a {
-  color: #00ff90;
-  text-decoration: none;
-}
-.info-box {
-  margin: 20px 0;
-  background: #111;
-  padding: 20px;
-  border-radius: 8px;
-  border: 1px solid #00ff90;
-}
-
-.info-box p {
-  margin: 10px 0;
-  font-size: 16px;
-  color: #eee;
-}
-
-#logoutBtn {
-  width: 100%;
-  padding: 12px;
-  border: none;
-  background-color: #ff3c3c;
-  color: white;
-  font-weight: bold;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-#logoutBtn:hover {
-  background-color: #cc2e2e;
-}
-</style>
 </head>
 <body>
-  <div class="container">
-    <div class="form-box">
-      <h2>Your Account</h2>
-      <div class="info-box">
-        <p><strong>Name:</strong> <span id="name"></span></p>
-        <p><strong>Email:</strong> <span id="email"></span></p>
-        <p><strong>Phone:</strong> <span id="phone"></span></p>
+
+<header>
+  <!-- Nav Bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="KC-WHITE.png" alt="Kahiya&Co" width="50" height="50">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="feedback.html">Feedback</a></li>
+          <li class="nav-item"><a class="nav-link" href="service.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="timeline.html">Timeline</a></li>
+        </ul>
       </div>
-      <button id="logoutBtn">Log Out</button>
+    </div>
+  </nav>
+</header>
+
+<!-- Account Info -->
+<div class="form-wrapper">
+  <div class="form-container text-center">
+    <img src="KC-WHITE.png" alt="Logo" class="img-fluid mb-3" style="max-height: 80px;">
+    <h2 class="title">Your Account<span style="color:#fd7e14;">.</span></h2>
+    <div id="userInfo" class="mt-4">
+      <p><strong>First Name:</strong> <span id="firstName">Loading...</span></p>
+      <p><strong>Last Name:</strong> <span id="lastName">Loading...</span></p>
+      <p><strong>Email:</strong> <span id="email">Loading...</span></p>
+    </div>
+    <div class="d-grid mt-4">
+      <button id="logoutBtn" class="btn btn-orange">Log Out</button>
     </div>
   </div>
+</div>
 
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+<!-- Footer -->
+<footer>
+  <a href="index.html"><img src="KC-WHITE.png" alt="KC LOGO" width="100" height="100"></a>
+  <p>&copy; 2025 Kahiya&Co & YW-Designs</p>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Firebase SDK -->
 <script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-analytics.js";
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
+  import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js";
+  import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyCB84FTOdVHbdMKSBLqKZ_YvZYl_QSVZek",
@@ -133,34 +80,39 @@ a {
     measurementId: "G-ZB13WQQKGF"
   };
 
-  // Initialize Firebase
   const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
 
-    const uid = localStorage.getItem("uid");
+  const firstNameEl = document.getElementById('firstName');
+  const lastNameEl = document.getElementById('lastName');
+  const emailEl = document.getElementById('email');
+  const logoutBtn = document.getElementById('logoutBtn');
 
-    if (uid) {
-      const userRef = doc(db, "users", uid);
-      getDoc(userRef).then(docSnap => {
-        if (docSnap.exists()) {
-          const data = docSnap.data();
-          document.getElementById("name").textContent = `${data.firstName} ${data.lastName}`;
-          document.getElementById("email").textContent = data.email;
-          document.getElementById("phone").textContent = data.phone;
-        }
-      });
+  onAuthStateChanged(auth, async (user) => {
+    if (user) {
+      const docRef = doc(db, "users", user.uid);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        const data = docSnap.data();
+        firstNameEl.textContent = data.firstName || "N/A";
+        lastNameEl.textContent = data.lastName || "N/A";
+        emailEl.textContent = data.email || user.email;
+      } else {
+        alert("No user data found.");
+      }
     } else {
-      alert("Not logged in.");
-      window.location.href = "signup.html";
+      alert("You are not logged in. Redirecting to login...");
+      window.location.href = "login.html";
     }
+  });
 
-    document.getElementById("logoutBtn").addEventListener("click", () => {
-      signOut(auth).then(() => {
-        localStorage.removeItem("uid");
-        window.location.href = "signup.html";
-      });
-    });
-  </script>
+  logoutBtn.addEventListener("click", async () => {
+    await signOut(auth);
+    window.location.href = "login.html";
+  });
+</script>
+
 </body>
 </html>
-
