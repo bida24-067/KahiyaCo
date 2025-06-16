@@ -1,47 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <div class="login-container">
-    <h2>Welcome back</h2>
-    <p>Please enter your information to sign in</p>
+  <meta charset="UTF-8">
+  <title>Kahiya&Co | Login</title>
+  <link rel="icon" href="KC-WHITE.png" type="image">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <div id="socialLogins" style="display: flex; gap: 10px; justify-content: center;">
-  <button id="appleLogin">🍎</button>
-  <button id="googleLogin">🔍</button>
-  <button id="twitterLogin">🐦</button>
-</div>
+  <!-- Bootstrap & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="signup.css"> <!-- Reuse same layout -->
+</head>
+
+<body>
+<header>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="KC-WHITE.png" alt="Kahiya&Co" width="50" height="50">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link active" href="login.html">Login</a></li>
+          <li class="nav-item"><a class="nav-link" href="feedback.html">Feedback</a></li>
+          <li class="nav-item"><a class="nav-link" href="service.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="timeline.html">Timeline</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- Login Form -->
+<div class="form-wrapper">
+  <div class="form-container text-center">
+    <img src="KC-WHITE.png" alt="Logo" class="img-fluid mb-3" style="max-height: 80px;">
+    <h2 class="title">Welcome back<span style="color:#fd7e14;">.</span></h2>
+    <p class="mt-2">Don't have an account? <a href="signup.html">Sign up</a></p>
 
     <form id="loginForm">
-  <input type="email" id="email" placeholder="Enter your email" required />
-  <input type="password" id="password" placeholder="Password" required />
-  <a href="recovery.html" id="forgotPassword">Forgot Password?</a>
-  <button type="submit">Sign in</button>
-</form>
+      <div class="mb-3">
+        <input type="email" class="form-control" id="email" placeholder="Email" required>
+      </div>
 
-<p>Or sign in with:</p>
-<div class="social-buttons">
-  <button id="googleLogin">Sign in with Google</button>
+      <div class="mb-3">
+        <input type="password" class="form-control" id="password" placeholder="Password" required>
+      </div>
+<div class="mb-3 text-end">
+  <a href="recovery.html" class="text-orange" style="font-size: 0.9rem;">Forgot Password?</a>
+</div>
+      <div class="d-grid">
+        <button type="submit" class="btn btn-orange">Log In</button>
+      </div>
+    </form>
+  </div>
 </div>
 
-    <p>Don't have an account yet? <a href="signup.html">Sign up</a></p>
-  </div>
+<!-- Footer -->
+<footer>
+  <a href="index.html">
+    <img src="KC-WHITE.png" alt="KC Logo" width="100" height="100">
+  </a>
+  <p>&copy; 2025 Kahiya&Co & YW-Designs</p>
+</footer>
 
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
-  <script src="firebase-config.js"></script>
-  <script src="auth.js"></script>
-</body>
+<!-- Firebase & Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-app.js";
-  import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-auth.js";
-  import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-firestore.js";
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
+  import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyCB84FTOdVHbdMKSBLqKZ_YvZYl_QSVZek",
@@ -55,69 +93,23 @@
 
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
-  const db = getFirestore(app);
-  const provider = new GoogleAuthProvider();
 
-  // Save user data to Firestore
-  async function saveUserData(user, authProvider) {
-    const userRef = doc(db, "users", user.uid);
-    const userSnap = await getDoc(userRef);
-
-    if (!userSnap.exists()) {
-      await setDoc(userRef, {
-        uid: user.uid,
-        name: user.displayName || "Anonymous",
-        email: user.email,
-        authProvider: authProvider,
-        timestamp: new Date()
-      });
-    }
-  }
-
-  // Email/Password Login
   const loginForm = document.getElementById("loginForm");
-  loginForm.addEventListener("submit", (e) => {
+
+  loginForm.addEventListener("submit", async (e) => {
     e.preventDefault();
+
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
 
-    signInWithEmailAndPassword(auth, email, password)
-      .then(async (userCredential) => {
-        await saveUserData(userCredential.user, "email");
-        window.location.href = "index.html";
-      })
-      .catch((error) => {
-        alert(error.message);
-      });
-  });
-
-  // Google Login
-  const googleBtn = document.getElementById("googleLogin");
-  googleBtn.addEventListener("click", () => {
-    signInWithPopup(auth, provider)
-      .then(async (result) => {
-        await saveUserData(result.user, "google");
-        window.location.href = "index.html";
-      })
-      .catch((error) => {
-        alert(error.message);
-      });
-  });
-
-  // Password Reset
-  const forgotLink = document.getElementById("forgotPassword");
-  forgotLink.addEventListener("click", (e) => {
-    e.preventDefault();
-    const email = prompt("Enter your email for password reset:");
-    if (email) {
-      sendPasswordResetEmail(auth, email)
-        .then(() => {
-          alert("Password reset email sent!");
-        })
-        .catch((error) => {
-          alert(error.message);
-        });
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      window.location.href = "account.html";
+    } catch (error) {
+      alert("Login failed: " + error.message);
     }
   });
 </script>
+
+</body>
 </html>
