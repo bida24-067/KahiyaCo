@@ -1,125 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-   <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+  <meta charset="UTF-8">
+  <title>Kahiya&Co | Login</title>
+  <link rel="icon" href="KC-WHITE.png" type="image">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-     <!-- Other head elements -->
+  <!-- Bootstrap & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-<!-- BootStrap -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-<style> 
-  html,  footer{ background-color: #101C2C;
-          color: #fff;
-          text-align: center;
-          }
-  #button2 { background-color: #101C2C;
-            color: #fff;
-            }
-  #button2:hover { background-color: #B58E5A;
-                  color: #fff;
-                  }
-</style>
-  
-     
-<title>Kahiya&Co | Home </title>
-<link rel="icon" href="KC-WHITE.png" type="image">
-</head>
-<header> 
-     <!-- Nav Bar -->
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-black">  <div class="container">
-    <a class="navbar-brand" href="index.html">
-      <img src="KC-WHITE.png" alt="Kahiya&Co" width="50" height="50">
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="index.html">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="contact.html">Contact Us</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="about.html">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="signup.html">Sign Up</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="feeback.html">Feedback</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="service.html">Our Services</a>
-        </li> 
-         <li class="nav-item">
-          <a class="nav-link" href="timeline.html">Timeline</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-</header>
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="signup.css"> <!-- Reuse same layout -->
+</head>
 
 <body>
-  <!-- Carousel -->
 
-   <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-  </div>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="KC-LOGO.png" class="d-block w-100" alt="KC">
-      <div class="carousel-caption d-md-block">
-        <h5>Grow.</h5>
-        <p>Grow Your Business To new heights.</p>
-         <button id="button2" type="button" onclick="window.location.href='service.html'">Explore Us</button>
+<!-- Login Form -->
+<div class="form-wrapper">
+  <div class="form-container text-center">
+    <img src="KC-WHITE.png" alt="Logo" class="img-fluid mb-3" style="max-height: 80px;">
+    <h2 class="title">Welcome back<span style="color:#fd7e14;">.</span></h2>
+    
+
+    <form id="loginForm">
+      <div class="mb-3">
+        <input type="email" class="form-control" id="email" placeholder="Email" required>
       </div>
-    </div>
-    <div class="carousel-item">
-      <img src="KC-LOGO.png" class="d-block w-100" alt="KC">
-      <div class="carousel-caption d-md-block">
-        <h5>Connect.</h5>
-        <p>Connrct with the right customers.</p>
-          <button id="button2" type="button" onclick="window.location.href='service.html'">Explore Us</button>
+
+      <div class="mb-3">
+        <input type="password" class="form-control" id="password" placeholder="Password" required>
       </div>
-    </div>
-    <div class="carousel-item">
-      <img src="KC-LOGO.png" class="d-block w-100" alt="KC">
-      <div class="carousel-caption d-md-block">
-        <h5>Succeed</h5>
-        <p>Succeed In your Industry</p>
-          <button id="button2" type="button" onclick="window.location.href='service.html'">Explore Us</button>
-      </div>
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
+<div class="mb-3 text-end">
+  <a href="recovery.html" class="text-orange" style="font-size: 0.9rem;">Forgot Password?</a>
 </div>
-    
-    
-    
-    
-    </body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+      <div class="d-grid">
+        <button type="submit" class="btn btn-orange">Log In</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <a href="index.html">
+    <img src="KC-WHITE.png" alt="KC Logo" width="100" height="100">
+  </a>
+  <p>&copy; 2025 Kahiya&Co & YW-Designs</p>
+</footer>
+
+<!-- Firebase & Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-app.js";
-  import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-auth.js";
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
+  import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyCB84FTOdVHbdMKSBLqKZ_YvZYl_QSVZek",
@@ -133,59 +69,23 @@
 
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
-  const provider = new GoogleAuthProvider();
 
-  // Email/Password Login
   const loginForm = document.getElementById("loginForm");
-  loginForm.addEventListener("submit", (e) => {
+
+  loginForm.addEventListener("submit", async (e) => {
     e.preventDefault();
+
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
 
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        window.location.href = "index.html"; // Redirect after login
-      })
-      .catch((error) => {
-        alert(error.message);
-      });
-  });
-
-  // Google Login
-  const googleBtn = document.getElementById("googleLogin");
-  googleBtn.addEventListener("click", () => {
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        window.location.href = "index.html"; // Redirect after Google login
-      })
-      .catch((error) => {
-        alert(error.message);
-      });
-  });
-
-  // Password Reset
-  const forgotLink = document.getElementById("forgotPassword");
-  forgotLink.addEventListener("click", (e) => {
-    e.preventDefault();
-    const email = prompt("Enter your email for password reset:");
-    if (email) {
-      sendPasswordResetEmail(auth, email)
-        .then(() => {
-          alert("Password reset email sent!");
-        })
-        .catch((error) => {
-          alert(error.message);
-        });
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      window.location.href = "test.html";
+    } catch (error) {
+      alert("Login failed: " + error.message);
     }
   });
 </script>
-<!-- Footer -->
-<footer>
-  <a href="index.html">
-    <img src="KC-WHITE.png" alt="KC LOGO" width="100" height="100">
-  </a>
-  <p>&copy; 2025 Kahiya&Co & YW-Designs</p>
-</footer>
 
+</body>
 </html>
-
