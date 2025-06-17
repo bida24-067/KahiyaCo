@@ -106,9 +106,59 @@
 </div>
 </div>
 
-<!-- Package selector form -->
 
-<form>
+<!-- Package selector form -->
+<div class="container mt-5">
+  <h2 class="text-center">Create Your Custom Package</h2>
+  <p class="text-center">Choose services that suit your business needs:</p>
+
+  <form id="customPackageForm" class="bg-dark p-4 rounded text-white" style="max-width: 600px; margin: 0 auto;">
+    
+    <!-- Email Field -->
+    <div class="mb-3">
+      <label for="email" class="form-label">Your Email</label>
+      <input type="email" id="email" class="form-control" placeholder="example@yourdomain.com" required>
+    </div>
+
+    <!-- Business Name Field -->
+    <div class="mb-3">
+      <label for="businessName" class="form-label">Business Name</label>
+      <input type="text" id="businessName" class="form-control" placeholder="Your Business Name" required>
+    </div>
+
+    <!-- Services Checkboxes -->
+    <label class="form-label">Select Services:</label>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="Content Creation" id="contentCreation">
+      <label class="form-check-label" for="contentCreation">Content Creation</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="Website Development" id="websiteDev">
+      <label class="form-check-label" for="websiteDev">Website Development</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="Ad Campaign Management" id="ads">
+      <label class="form-check-label" for="ads">Ad Campaign Management</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="Lead Engagement" id="leads">
+      <label class="form-check-label" for="leads">Lead Engagement</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="Social Media Management" id="smm">
+      <label class="form-check-label" for="smm">Social Media Management</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="Public Relations (PR)" id="pr">
+      <label class="form-check-label" for="pr">Public Relations (PR)</label>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="d-grid mt-4">
+      <button type="submit" id="button2" class="btn">Submit Package</button>
+    </div>
+  </form>
+</div>
   
 <!-- Page End -->
 </main>
